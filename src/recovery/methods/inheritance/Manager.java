@@ -13,6 +13,7 @@ public class Manager extends Employee{
         return this.getBaseSalary() + this.bonus;
     }
 
+    @Override
     public void work() {
         System.out.print("Менеджер управляет командой");
     }

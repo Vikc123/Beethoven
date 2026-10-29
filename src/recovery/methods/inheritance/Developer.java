@@ -13,6 +13,7 @@ public class Developer extends Employee {
         return this.getBaseSalary() + this.completedProjects * 5000;
     }
 
+    @Override
     public void work() {
         System.out.print("Программист пишет код");
     }

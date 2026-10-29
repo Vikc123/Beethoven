@@ -13,6 +13,7 @@ public class Intern extends Employee{
         return this.hoursWorked*300;
     }
 
+    @Override
     public void work() {
         System.out.print("Стажер проходит обучение");
     }
