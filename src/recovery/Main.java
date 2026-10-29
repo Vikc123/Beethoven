@@ -17,5 +17,17 @@ public class Main {
         n_3.represent();
 
         System.out.println(BankAccount.getTotalAccounts());
+
+        BankAccount anotherAccount = n_1;
+
+        anotherAccount.deposit(200);
+
+        System.out.println(n_1.getBalance());
+
+        System.out.print(n_1 == anotherAccount);
+
+        anotherAccount = null;
+
+        n_1.represent();
     }
 }
