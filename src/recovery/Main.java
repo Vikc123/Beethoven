@@ -1,89 +1,80 @@
 package recovery;
 
-import recovery.methods.regex.RegistrationValidator;
+import recovery.methods.generics.Box;
+import recovery.methods.generics.GenericUtils;
+import recovery.methods.generics.NumberUtils;
+import recovery.methods.generics.ListUtils;
 
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-
     public static void main(String[] args) {
 
-        String[] logins = {
-                "Viktor_123",
-                "123Viktor",
-                "abc",
-                "admin5",
-                "user-name"
-        };
+        System.out.println("=== BOX ===");
 
-        System.out.println("=== Проверка логинов ===");
+        Box<String> stringBox = new Box<>("Java");
+        Box<Integer> integerBox = new Box<>(123);
+        Box<Double> doubleBox = new Box<>(3.14);
 
-        for (String login : logins) {
-            System.out.println(
-                    login + ": " +
-                            RegistrationValidator.validateLogin(login)
-            );
-        }
+        System.out.println(stringBox.getValue());
+        System.out.println(integerBox.getValue());
+        System.out.println(doubleBox.getValue());
 
-        String[] passwords = {
-                "Java2026",
-                "MyPassword123",
-                "password",
-                "JAVA2026",
-                "Abc123"
-        };
+        stringBox.setValue("Java Generics");
+        System.out.println(stringBox.getValue());
 
-        System.out.println("\n=== Проверка паролей ===");
+        stringBox.printType();
+        integerBox.printType();
+        doubleBox.printType();
 
-        for (String password : passwords) {
-            System.out.println(
-                    password + ": " +
-                            RegistrationValidator.validatePassword(password)
-            );
-        }
+        // integerBox.setValue("Hello"); // Ошибка компиляции
 
-        String[] emails = {
-                "user123@gmail.com",
-                "viktor_k@mail.ru",
-                "usergmail.com",
-                "@mail.ru",
-                "user@mail"
-        };
+        System.out.println("\n=== GENERIC METHODS ===");
 
-        System.out.println("\n=== Проверка Email ===");
+        String[] names = {"Иван", "Анна"};
+        Integer[] numbers = {10, 20, 30};
+        Double[] values = {1.5, 2.5};
 
-        for (String email : emails) {
-            System.out.println(
-                    email + ": " +
-                            RegistrationValidator.validateEmail(email)
-            );
-        }
+        GenericUtils.printArray(names);
+        GenericUtils.printArray(numbers);
+        GenericUtils.printArray(values);
 
-        String[] phones = {
-                "+7 (999) 123-45-67",
-                "89991234567",
-                "+7 999 1234567"
-        };
+        System.out.println("\n=== BOUNDED TYPES ===");
 
-        System.out.println("\n=== Проверка телефонов ===");
+        System.out.println(NumberUtils.sum(10, 20));
+        System.out.println(NumberUtils.sum(1.5, 2.5));
+        System.out.println(NumberUtils.sum(1.5f, 2.5f));
 
-        for (String phone : phones) {
-            System.out.println(
-                    phone + ": " +
-                            RegistrationValidator.validatePhone(phone)
-            );
-        }
 
-        System.out.println("\n=== Поиск номеров заказов ===");
+        System.out.println("\n=== WILDCARDS ===");
 
-        String text = "Заказы: A-123, B-456, C-789";
+        List<String> strings = new ArrayList<>();
+        strings.add("Java");
+        strings.add("Python");
 
-        Pattern pattern = Pattern.compile("[A-Z]-[0-9]{3}");
-        Matcher matcher = pattern.matcher(text);
+        List<Integer> integers = new ArrayList<>();
+        integers.add(10);
+        integers.add(20);
 
-        while (matcher.find()) {
-            System.out.println(matcher.group());
-        }
+        List<Double> doubles = new ArrayList<>();
+        doubles.add(1.5);
+        doubles.add(2.5);
+
+        List<Number> numberList = new ArrayList<>();
+
+        ListUtils.printList(strings);
+        ListUtils.printList(integers);
+
+        System.out.println(ListUtils.sumNumbers(integers));
+        System.out.println(ListUtils.sumNumbers(doubles));
+
+        ListUtils.addIntegers(numberList);
+        ListUtils.addIntegers(integers);
+
+        System.out.println("После добавления:");
+
+        ListUtils.printList(numberList);
+        ListUtils.printList(integers);
     }
 }

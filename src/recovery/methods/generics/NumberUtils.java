@@ -1,4 +1,4 @@
-package recovery.generics;
+package recovery.methods.generics;
 
 public class NumberUtils {
 
