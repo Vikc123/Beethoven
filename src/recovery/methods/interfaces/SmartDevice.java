@@ -4,6 +4,8 @@ public abstract class SmartDevice {
     private String name;
     private int serialNumber;
 
+    public SmartDevice() {}
+
     public SmartDevice(String name, int serialNumber) {
         this.name = name;
         this.serialNumber = serialNumber;

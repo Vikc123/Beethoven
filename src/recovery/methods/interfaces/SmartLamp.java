@@ -4,7 +4,16 @@ public class SmartLamp extends SmartDevice implements Switchable, Adjustable {
     private boolean on;
     private int brightness;
 
-    public SmartLamp(Boolean on, int brightness, String name, int serialNumber) {
+    public SmartLamp(String name, int serialNumber) {
+        super(name, serialNumber);
+    }
+
+    public SmartLamp(Boolean on, int brightness) {
+        this.on = on;
+        this.brightness = brightness;
+    }
+
+    public SmartLamp(String name, int serialNumber, Boolean on, int brightness) {
         super(name, serialNumber);
         this.on = on;
         this.brightness = brightness;

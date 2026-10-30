@@ -4,7 +4,16 @@ public class SmartFan extends SmartDevice implements Switchable, Adjustable {
     private boolean on;
     private int speed;
 
-    public SmartFan(boolean on, int speed, String name, int serialNumber) {
+    public SmartFan(String name, int serialNumber) {
+        super(name, serialNumber);
+    }
+
+    public SmartFan(boolean on, int speed) {
+        this.on = on;
+        this.speed = speed;
+    }
+
+    public SmartFan(String name, int serialNumber, boolean on, int speed) {
         super(name, serialNumber);
         this.on = on;
         this.speed = speed;
